@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS events (
+  id UUID PRIMARY KEY,
+  timestamp TIMESTAMPTZ NOT NULL,
+  user_id TEXT NOT NULL,
+  session_id TEXT NOT NULL,
+  event_type TEXT NOT NULL,
+  source TEXT,
+  metadata JSONB NOT NULL DEFAULT '{}'::jsonb
+);
+
+CREATE INDEX IF NOT EXISTS idx_events_user_time ON events (user_id, timestamp DESC);
+CREATE INDEX IF NOT EXISTS idx_events_type_time ON events (event_type, timestamp DESC);
