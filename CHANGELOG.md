@@ -25,6 +25,7 @@ and this project adheres to **Semantic Versioning**.
     - Implemented aggregations (/stats/top-event-types, /stats/events-per-minute)
     - Added API tests for querying and stats endpoints
 - Docker Compose stack for postgres + services
+- Added GitHub Actions CI pipeline running automated tests for collector and query services
 ### Changed
 - N/A
 
