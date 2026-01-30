@@ -70,6 +70,40 @@ This project is currently under active development.
 
 See [CHANGELOG.md](CHANGELOG.md) for a detailed list of changes and milestones.
 
+## Query performance analysis
+
+Query performance was validated using PostgreSQL `EXPLAIN ANALYZE` to ensure
+appropriate execution plans depending on query patterns.
+
+### Global aggregation (event distribution)
+For global aggregation queries such as:
+
+```sql
+SELECT event_type, COUNT(*)
+FROM events
+GROUP BY event_type
+ORDER BY COUNT(*) DESC
+LIMIT 10;
+```
+PostgreSQL performs a Sequential Scan, which is expected since the query
+requires reading the full dataset to compute accurate aggregates.
+![Sequential Scan](docs\explain-analyze-top-event-types.png)
+
+### Filtered read queries
+For filtered read queries such as:
+
+```sql
+SELECT *
+FROM events
+WHERE user_id = 'u1'
+ORDER BY timestamp DESC
+LIMIT 50;
+```
+PostgreSQL uses an Index Scan, demonstrating that indexes are correctly
+leveraged for selective queries.
+![Index Scan](docs\explain-events-userid.png)
+
+
 ---
 ## Author
 
