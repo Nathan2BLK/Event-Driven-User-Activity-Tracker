@@ -26,6 +26,7 @@ and this project adheres to **Semantic Versioning**.
     - Added API tests for querying and stats endpoints
 - Docker Compose stack for postgres + services
 - Added GitHub Actions CI pipeline running automated tests for collector and query services
+- add Docker build job for collector-api and query-api images
 ### Changed
 - N/A
 
