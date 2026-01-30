@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: query-config
+  namespace: event-tracker
+data:
+  QUERY_PORT: "3001"
+  POSTGRES_HOST: "postgres"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "event_tracker"
+  POSTGRES_USER: "event_tracker"
