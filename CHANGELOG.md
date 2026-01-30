@@ -16,13 +16,14 @@ and this project adheres to **Semantic Versioning**.
 - Initial project definition and scope
 - Repository structure aligned with DevOps best practices
 - Collector API
-    - Collector API scaffold with `/events`, `/health/live`, `/health/ready`, and `/metrics` endpoints
-    - Collector API: persist events to PostgreSQL (events table + insert on POST /events)
-    - Collector API: added unit and API tests for event ingestion
+    - scaffold with `/events`, `/health/live`, `/health/ready`, and `/metrics` endpoints
+    - Persist events to PostgreSQL (events table + insert on POST /events)
+    - Added unit and API tests for event ingestion
 - Query API
-    - Query API scaffold with events and statistics endpoints
-    - Query API: implemented PostgreSQL reads with filters + pagination (GET /events)
-    - Query API: implemented aggregations (/stats/top-event-types, /stats/events-per-minute)
+    - Scaffold with events and statistics endpoints
+    - Implemented PostgreSQL reads with filters + pagination (GET /events)
+    - Implemented aggregations (/stats/top-event-types, /stats/events-per-minute)
+    - Added API tests for querying and stats endpoints
 ### Changed
 - N/A
 
