@@ -15,7 +15,7 @@ and this project adheres to **Semantic Versioning**.
 ### Added
 - Initial project definition and scope
 - Repository structure aligned with DevOps best practices
-
+- Collector API scaffold with `/events`, `/health/live`, `/health/ready`, and `/metrics` endpoints
 ### Changed
 - N/A
 
