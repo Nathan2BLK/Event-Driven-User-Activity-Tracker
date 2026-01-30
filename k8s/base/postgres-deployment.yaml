@@ -24,10 +24,15 @@ spec:
             - secretRef:
                 name: postgres-secret
           volumeMounts:
-            - name: init-sql
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+            - name: postgres-init
               mountPath: /docker-entrypoint-initdb.d/init.sql
               subPath: init.sql
       volumes:
-        - name: init-sql
+        - name: postgres-data
+          persistentVolumeClaim:
+            claimName: postgres-pvc
+        - name: postgres-init
           configMap:
             name: postgres-init

@@ -27,7 +27,10 @@ and this project adheres to **Semantic Versioning**.
 - Docker Compose stack for postgres + services
 - Added GitHub Actions CI pipeline running automated tests for collector and query services
 - Add Docker build job for collector-api and query-api images
-- Added Kubernetes base manifests (postgres, collector, query) with ConfigMaps, Secrets, Services, and probes
+- Kubernetes
+    - Added base manifests (postgres, collector, query) with ConfigMaps, Secrets, Services, and probes
+    - Added persistent storage for PostgreSQL (PVC)
+    - Added automatic database schema initialization for events table
 ### Changed
 - N/A
 
