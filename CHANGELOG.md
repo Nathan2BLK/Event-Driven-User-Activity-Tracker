@@ -17,6 +17,7 @@ and this project adheres to **Semantic Versioning**.
 - Repository structure aligned with DevOps best practices
 - Collector API scaffold with `/events`, `/health/live`, `/health/ready`, and `/metrics` endpoints
 - Collector API: persist events to PostgreSQL (events table + insert on POST /events)
+- Collector API: added unit and API tests for event ingestion
 ### Changed
 - N/A
 
