@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: event_tracker
+          POSTGRES_USER: event_tracker
+          POSTGRES_PASSWORD: event_tracker_pwd
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U event_tracker"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      # Shared DB config for both services
+      POSTGRES_HOST: localhost
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: event_tracker
+      POSTGRES_USER: event_tracker
+      POSTGRES_PASSWORD: event_tracker_pwd
+
+      # App ports (not actually exposed in CI)
+      COLLECTOR_PORT: 3000
+      QUERY_PORT: 3001
+      NODE_ENV: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      # -------- Collector API --------
+      - name: Install dependencies (collector-api)
+        working-directory: apps/collector-api
+        run: npm ci
+
+      - name: Run tests (collector-api)
+        working-directory: apps/collector-api
+        run: npm test
+
+      # -------- Query API --------
+      - name: Install dependencies (query-api)
+        working-directory: apps/query-api
+        run: npm ci
+
+      - name: Run tests (query-api)
+        working-directory: apps/query-api
+        run: npm test
