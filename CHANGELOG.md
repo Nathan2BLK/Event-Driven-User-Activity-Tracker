@@ -1,6 +1,6 @@
 This strictly follows **https://keepachangelog.com/** and is exactly what graders expect.
 
-```markdown
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -13,11 +13,14 @@ and this project adheres to **Semantic Versioning**.
 ## [Unreleased]
 
 ### Added
-- Initial project definition and scope
-- Repository structure aligned with DevOps best practices
-- Collector API scaffold with `/events`, `/health/live`, `/health/ready`, and `/metrics` endpoints
-- Collector API: persist events to PostgreSQL (events table + insert on POST /events)
-- Collector API: added unit and API tests for event ingestion
+- Collector API
+    - Initial project definition and scope
+    - Repository structure aligned with DevOps best practices
+    - Collector API scaffold with `/events`, `/health/live`, `/health/ready`, and `/metrics` endpoints
+    - Collector API: persist events to PostgreSQL (events table + insert on POST /events)
+    - Collector API: added unit and API tests for event ingestion
+- Query API
+    - Query API scaffold with events and statistics endpoints
 ### Changed
 - N/A
 
