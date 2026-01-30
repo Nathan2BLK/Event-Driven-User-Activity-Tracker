@@ -21,6 +21,8 @@ and this project adheres to **Semantic Versioning**.
     - Collector API: added unit and API tests for event ingestion
 - Query API
     - Query API scaffold with events and statistics endpoints
+    - Query API: implemented PostgreSQL reads with filters + pagination (GET /events)
+    - Query API: implemented aggregations (/stats/top-event-types, /stats/events-per-minute)
 ### Changed
 - N/A
 
