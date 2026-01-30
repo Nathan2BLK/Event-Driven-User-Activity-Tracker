@@ -37,6 +37,6 @@ and this project adheres to **Semantic Versioning**.
 
 ### Fixed
 - update cache-dependency-path for npm caching in CI workflow
-
+- add steps to install PostgreSQL client and initialize database schema in CI pipeline
 ### Security
 - N/A
