@@ -10,3 +10,4 @@ CREATE TABLE IF NOT EXISTS events (
 
 CREATE INDEX IF NOT EXISTS idx_events_user_time ON events (user_id, timestamp DESC);
 CREATE INDEX IF NOT EXISTS idx_events_type_time ON events (event_type, timestamp DESC);
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
