@@ -24,6 +24,7 @@ and this project adheres to **Semantic Versioning**.
     - Implemented PostgreSQL reads with filters + pagination (GET /events)
     - Implemented aggregations (/stats/top-event-types, /stats/events-per-minute)
     - Added API tests for querying and stats endpoints
+- Docker Compose stack for postgres + services
 ### Changed
 - N/A
 
