@@ -36,7 +36,7 @@ and this project adheres to **Semantic Versioning**.
 - N/A
 
 ### Fixed
-- N/A
+- update cache-dependency-path for npm caching in CI workflow
 
 ### Security
 - N/A
