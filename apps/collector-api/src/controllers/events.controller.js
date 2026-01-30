@@ -19,11 +19,9 @@ const eventsController = {
           required: ["userId:string", "sessionId:string", "eventType:string"],
         });
       }
-
-      await eventsService.acceptEvent(req.body);
-
-      // 202 Accepted is fine for an ingestion service
-      return res.status(202).json({ status: "accepted" });
+      const eventId = await eventsService.acceptEvent(req.body);
+      // Now it’s synchronous DB write, so 201 Created is more truthful than 202.
+      return res.status(201).json({ status: "stored", eventId });
     } catch (err) {
       next(err);
     }
