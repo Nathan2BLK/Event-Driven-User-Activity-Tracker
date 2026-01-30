@@ -9,8 +9,15 @@ function getEnv(name, defaultValue = undefined) {
 
 const env = {
   nodeEnv: getEnv("NODE_ENV", "development"),
-  // QUERY_PORT avoids collision with collector
   port: Number.parseInt(getEnv("QUERY_PORT", getEnv("PORT", "3001")), 10),
+
+  postgres: {
+    host: getEnv("POSTGRES_HOST", "localhost"),
+    port: Number.parseInt(getEnv("POSTGRES_PORT", "5432"), 10),
+    database: getEnv("POSTGRES_DB", "event_tracker"),
+    user: getEnv("POSTGRES_USER", "event_tracker"),
+    password: getEnv("POSTGRES_PASSWORD", "event_tracker_pwd"),
+  },
 };
 
 module.exports = { env };
