@@ -31,6 +31,7 @@ and this project adheres to **Semantic Versioning**.
     - Added base manifests (postgres, collector, query) with ConfigMaps, Secrets, Services, and probes
     - Added persistent storage for PostgreSQL (PVC)
     - Added automatic database schema initialization for events table
+- Add GitOps deployment configuration (ArgoCD app path [documented](docs\gitops.md))
 ### Changed
 - N/A
 
