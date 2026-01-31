@@ -31,7 +31,9 @@ and this project adheres to **Semantic Versioning**.
     - Added base manifests (postgres, collector, query) with ConfigMaps, Secrets, Services, and probes
     - Added persistent storage for PostgreSQL (PVC)
     - Added automatic database schema initialization for events table
+    - deploy collector/query using GHCR images
 - Add GitOps deployment configuration (ArgoCD app path [documented](docs\gitops.md))
+- Add publish Docker images to GHCR on main
 ### Changed
 - N/A
 
@@ -44,5 +46,6 @@ and this project adheres to **Semantic Versioning**.
 ### Fixed
 - update cache-dependency-path for npm caching in CI workflow
 - add steps to install PostgreSQL client and initialize database schema in CI pipeline
+- lower case for repository in the image push on github
 ### Security
 - N/A
