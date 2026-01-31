@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: collector
-          image: ghcr.io/Nathan2BLK/event-driven-user-activity-tracker/collector-api:latest
+          image: ghcr.io/nathan2blk/event-driven-user-activity-tracker/collector-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
