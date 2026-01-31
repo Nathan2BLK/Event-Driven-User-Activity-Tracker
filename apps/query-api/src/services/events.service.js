@@ -1,4 +1,4 @@
-const { query } = require("../db/postgres");
+const { queryWithName } = require("../db/postgres");
 
 function buildWhere(filters, params) {
   const where = [];
@@ -33,7 +33,7 @@ const eventsService = {
 
     // Count (for pagination UI)
     const countSql = `SELECT COUNT(*)::int AS total FROM events ${whereSql}`;
-    const countRes = await query(countSql, params);
+    const countRes = await queryWithName("events_count", countSql, params);
     const total = countRes.rows[0]?.total ?? 0;
 
     // Data query
@@ -50,7 +50,7 @@ const eventsService = {
       LIMIT $${dataParams.length - 1} OFFSET $${dataParams.length}
     `;
 
-    const dataRes = await query(dataSql, dataParams);
+    const dataRes = await queryWithName("events_list", dataSql, dataParams);
 
     return {
       data: dataRes.rows,

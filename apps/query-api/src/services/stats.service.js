@@ -1,4 +1,4 @@
-const { query } = require("../db/postgres");
+const { queryWithName } = require("../db/postgres");
 
 const statsService = {
   topEventTypes: async ({ from = null, to = null, limit = 10 } = {}) => {
@@ -27,7 +27,7 @@ const statsService = {
       LIMIT $${params.length}
     `;
 
-    const res = await query(sql, params);
+    const res = await queryWithName("top_event_types", sql, params);
     return { data: res.rows };
   },
 
@@ -56,10 +56,10 @@ const statsService = {
       ORDER BY minute ASC
     `;
 
-    const res = await query(sql, params);
+    const res = await queryWithName("events_per_minute", sql, params);
     return {
       data: res.rows.map((r) => ({
-        minute: r.minute,
+        minute: new Date(r.minute).toISOString(),
         count: r.count,
       })),
     };
