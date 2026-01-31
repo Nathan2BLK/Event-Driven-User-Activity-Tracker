@@ -1,10 +1,7 @@
+const { metricsHandler } = require("../metrics/metrics");
+
 const metricsController = {
-  getMetrics: (req, res) => {
-    res
-      .status(200)
-      .type("text/plain")
-      .send("# metrics not implemented yet\n");
-  },
+  getMetrics: metricsHandler,
 };
 
 module.exports = { metricsController };
