@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-event-tracker
+  namespace: event-tracker
+  labels:
+    grafana_dashboard: "1"
+data:
+  event-tracker.json: |
+    {
+      "title": "Event Tracker - API & Ingestion",
+      "timezone": "browser",
+      "schemaVersion": 39,
+      "version": 1,
+      "refresh": "10s",
+      "panels": [
+        {
+          "type": "timeseries",
+          "title": "Requests/sec (by service)",
+          "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "sum(rate(http_requests_total[1m])) by (service)",
+              "legendFormat": "{{service}}"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "p95 HTTP latency (seconds)",
+          "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, service))",
+              "legendFormat": "{{service}}"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "Ingestion rate by event_type (events/sec)",
+          "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "sum(rate(events_ingested_total[1m])) by (event_type)",
+              "legendFormat": "{{event_type}}"
+            }
+          ]
+        },
+        {
+          "type": "timeseries",
+          "title": "p95 DB query latency (seconds)",
+          "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.95, sum(rate(db_query_duration_seconds_bucket[5m])) by (le, query_name))",
+              "legendFormat": "{{query_name}}"
+            }
+          ]
+        }
+      ]
+    }
