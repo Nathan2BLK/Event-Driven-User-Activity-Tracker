@@ -4,11 +4,13 @@ const { statsRouter } = require("./routes/stats.routes");
 const { healthRouter } = require("./routes/health.routes");
 const { metricsRouter } = require("./routes/metrics.routes");
 const { errorMiddleware } = require("./middlewares/error.middleware");
+const { metricsMiddleware } = require("./metrics/metrics");
 
 function createApp() {
   const app = express();
 
   app.use(express.json({ limit: "1mb" }));
+  app.use(metricsMiddleware("query-api"));
 
   app.use("/events", eventsRouter);
   app.use("/stats", statsRouter);

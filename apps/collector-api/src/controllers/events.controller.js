@@ -1,15 +1,6 @@
 const { eventsService } = require("../services/events.service");
 const { validateEventPayload } = require("../services/eventValidation");
-
-function isValidEventPayload(body) {
-  // Minimal “basic schema check” for now (no external lib)
-  return (
-    body &&
-    typeof body.userId === "string" &&
-    typeof body.sessionId === "string" &&
-    typeof body.eventType === "string"
-  );
-}
+const { eventsIngestedTotal } = require("../metrics/metrics");
 
 const eventsController = {
   createEvent: async (req, res, next) => {
@@ -23,6 +14,7 @@ const eventsController = {
         });
       }
       const eventId = await eventsService.acceptEvent(req.body);
+      eventsIngestedTotal.inc({ event_type: String(req.body.eventType) });
       // Now it’s synchronous DB write, so 201 Created is more truthful than 202.
       return res.status(201).json({ status: "stored", eventId });
     } catch (err) {
