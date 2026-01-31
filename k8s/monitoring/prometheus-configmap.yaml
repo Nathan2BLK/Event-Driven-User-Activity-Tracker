@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: event-tracker
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+
+    scrape_configs:
+      - job_name: "collector-api"
+        metrics_path: /metrics
+        static_configs:
+          - targets: ["collector:3000"]
+
+      - job_name: "query-api"
+        metrics_path: /metrics
+        static_configs:
+          - targets: ["query:3001"]
