@@ -34,6 +34,7 @@ and this project adheres to **Semantic Versioning**.
     - deploy collector/query using GHCR images
 - Add GitOps deployment configuration (ArgoCD app path [documented](docs\gitops.md))
 - Add publish Docker images to GHCR on main
+- Grafana: added dashboard for request rate, p95 latency, ingestion rate by event_type, and DB query latency
 ### Changed
 - N/A
 
