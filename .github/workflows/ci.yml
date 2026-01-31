@@ -129,6 +129,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set lowercase repository name
+        run: |
+          echo "REPO_LOWER=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -147,8 +151,8 @@ jobs:
           file: ./apps/collector-api/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/collector-api:${{ github.sha }}
-            ghcr.io/${{ github.repository }}/collector-api:latest
+            ghcr.io/${{ env.REPO_LOWER }}/collector-api:${{ github.sha }}
+            ghcr.io/${{ env.REPO_LOWER }}/collector-api:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -160,7 +164,7 @@ jobs:
           file: ./apps/query-api/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/query-api:${{ github.sha }}
-            ghcr.io/${{ github.repository }}/query-api:latest
+            ghcr.io/${{ env.REPO_LOWER }}/query-api:${{ github.sha }}
+            ghcr.io/${{ env.REPO_LOWER }}/query-api:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
