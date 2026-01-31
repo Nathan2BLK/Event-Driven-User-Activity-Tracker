@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
         - name: query
-          image: event-tracker/query-api:dev
-          imagePullPolicy: IfNotPresent
+          image: ghcr.io/Nathan2BLK/Event-Driven-User-Activity-Tracker/query-api:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3001
           
