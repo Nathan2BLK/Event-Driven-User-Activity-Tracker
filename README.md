@@ -63,6 +63,7 @@ Observability is provided through Prometheus metrics and Grafana dashboards.
 │   ├── collector-api/
 │   └── query-api/
 ├── infra/
+│   └── db/
 │   └── docker-compose/
 ├── k8s/
 │   ├── base/
@@ -71,7 +72,10 @@ Observability is provided through Prometheus metrics and Grafana dashboards.
 │   │   └── grafana/
 │   └── argocd/
 ├── docs/
-│   └── gitops.md
+│   ├── image/
+│   ├── gitops.md
+│   ├── deployment.md
+│   └── definition-of-done.md
 ├── .github/workflows/
 ├── CHANGELOG.md
 └── README.md
@@ -89,6 +93,12 @@ Observability is provided through Prometheus metrics and Grafana dashboards.
 - GET /health/live
 - GET /health/ready
 - GET /metrics
+
+
+explain-analyze-top-event-types![top-event-explain-analyze](docs/image\explain-analyze-top-event-types.png)
+
+explain-events-userid![top-event-explain-analyze](docs/image\explain-events-userid.png)
+
 ---
 ## Kubernetes Deployment
 - Each service runs in its own Deployment
@@ -119,16 +129,9 @@ Grafana provides dashboards for:
 - Ingestion throughput
 - Database performance
 
-## Local Development
-### Docker Compose
-```bash
-docker compose up -d --build
-```
-### Kubernetes (Minikube)
-```bash
-kubectl apply -f k8s/base
-kubectl apply -f k8s/monitoring
-```
+
+## Local Deployment and testing
+follow [this page](docs\deployment.md) for all the details
 ##  Release Management
 This project follows:
 - Semantic Versioning
@@ -136,3 +139,7 @@ This project follows:
 - CHANGELOG-driven releases
 
 Current version: v1.0.0
+
+## Author
+
+Nathan DE BLECKER
