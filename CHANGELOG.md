@@ -10,43 +10,22 @@ and this project adheres to **Semantic Versioning**.
 
 ---
 
-## [Unreleased]
+## [1.0.0] - 2026-02-01
 
 ### Added
-- Initial project definition and scope
-- Repository structure aligned with DevOps best practices
-- Collector API
-    - scaffold with `/events`, `/health/live`, `/health/ready`, and `/metrics` endpoints
-    - Persist events to PostgreSQL (events table + insert on POST /events)
-    - Added unit and API tests for event ingestion
-- Query API
-    - Scaffold with events and statistics endpoints
-    - Implemented PostgreSQL reads with filters + pagination (GET /events)
-    - Implemented aggregations (/stats/top-event-types, /stats/events-per-minute)
-    - Added API tests for querying and stats endpoints
-- Docker Compose stack for postgres + services
-- Added GitHub Actions CI pipeline running automated tests for collector and query services
-- Add Docker build job for collector-api and query-api images
-- Kubernetes
-    - Added base manifests (postgres, collector, query) with ConfigMaps, Secrets, Services, and probes
-    - Added persistent storage for PostgreSQL (PVC)
-    - Added automatic database schema initialization for events table
-    - deploy collector/query using GHCR images
-- Add GitOps deployment configuration (ArgoCD app path [documented](docs\gitops.md))
-- Add publish Docker images to GHCR on main
-- Grafana: added dashboard for request rate, p95 latency, ingestion rate by event_type, and DB query latency
-### Changed
-- N/A
-
-### Deprecated
-- N/A
-
-### Removed
-- N/A
+- Collector API with event ingestion and validation
+- Query API with aggregation and statistics endpoints
+- PostgreSQL persistence with schema initialization
+- Dockerfiles for all services
+- Docker Compose local stack
+- Kubernetes manifests (deployments, services, PVC)
+- Health checks and resource limits
+- GitOps deployment with ArgoCD
+- Prometheus monitoring and Grafana dashboards
+- Application-level metrics (HTTP, ingestion, DB latency)
 
 ### Fixed
-- update cache-dependency-path for npm caching in CI workflow
-- add steps to install PostgreSQL client and initialize database schema in CI pipeline
-- lower case for repository in the image push on github
-### Security
-- N/A
+- Improved service startup stability using readiness/startup probes
+- Hardened database connectivity and persistence handling
+
+## Unreleased
