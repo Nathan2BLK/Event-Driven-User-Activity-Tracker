@@ -28,8 +28,8 @@ Observability is provided through Prometheus metrics and Grafana dashboards.
 
 Prebuilt images are published to Docker Hub:
 
-- Collector API: `nathan2blk/event-tracker-collector:1.0.0`
-- Query API: `nathan2blk/event-tracker-query:1.0.0`
+- Collector API: [`nathan2blk/event-tracker-collector:1.0.0`](https://hub.docker.com/repository/docker/nathan2blk/event-tracker-collector/general)
+- Query API: [`nathan2blk/event-tracker-query:1.0.0`](https://hub.docker.com/repository/docker/nathan2blk/event-tracker-query/general)
 
 ---
 
