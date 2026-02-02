@@ -186,7 +186,7 @@ Expected:
 
 - Health Status: Healthy
 
-![argocd UI](image\argocd_gitops.png)
+![argocd UI](image/argocd_gitops.png)
 
 ## What ArgoCD is syncing here
 The Application points to:
@@ -230,6 +230,7 @@ This project includes a full Infrastructure-as-Code setup using Vagrant and Ansi
 - Ansible
 
 ## Start the environment
+from repo root
 ```bash
 vagrant up
 ```
@@ -259,7 +260,7 @@ curl http://localhost:3001/health/live
 ## Deploy Prometheus
 If you keep monitoring in **k8s/monitoring**:
 ```bash
-kubectl apply -f k8s/monitoring
+kubectl apply -f k8s/monitoring/prometheus
 ```
 
 Verify:
