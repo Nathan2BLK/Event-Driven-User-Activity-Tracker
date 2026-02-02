@@ -104,6 +104,14 @@ Prebuilt images are published to Docker Hub:
 - GET /health/ready
 - GET /metrics
 
+### API documentation (Swagger)
+
+- Collector API docs: `http://localhost:3000/docs`
+- Query API docs: `http://localhost:3001/docs`
+
+Raw OpenAPI specs:
+- `GET /openapi.yaml`
+
 
 explain-analyze-top-event-types
 ![top-event-explain-analyze](docs/image/explain-analyze-top-event-types.png)

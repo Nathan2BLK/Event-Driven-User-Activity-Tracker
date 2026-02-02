@@ -4,6 +4,7 @@ const { healthRouter } = require("./routes/health.routes");
 const { metricsRouter } = require("./routes/metrics.routes");
 const { errorMiddleware } = require("./middlewares/error.middleware");
 const { metricsMiddleware } = require("./metrics/metrics");
+const docsRoutes = require("./routes/docs.routes");
 
 
 function createApp() {
@@ -17,6 +18,7 @@ function createApp() {
   app.use("/events", eventsRouter);
   app.use("/health", healthRouter);
   app.use("/metrics", metricsRouter);
+  app.use("/", docsRoutes);
 
   // Fallback 404
   app.use((req, res) => {
