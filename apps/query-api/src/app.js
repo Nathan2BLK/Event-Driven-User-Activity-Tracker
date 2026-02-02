@@ -5,6 +5,7 @@ const { healthRouter } = require("./routes/health.routes");
 const { metricsRouter } = require("./routes/metrics.routes");
 const { errorMiddleware } = require("./middlewares/error.middleware");
 const { metricsMiddleware } = require("./metrics/metrics");
+const docsRoutes = require("./routes/docs.routes");
 
 function createApp() {
   const app = express();
@@ -16,6 +17,7 @@ function createApp() {
   app.use("/stats", statsRouter);
   app.use("/health", healthRouter);
   app.use("/metrics", metricsRouter);
+  app.use("/", docsRoutes);
 
   app.use((req, res) => {
     res.status(404).json({ error: "Not Found" });
