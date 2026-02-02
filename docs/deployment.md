@@ -220,6 +220,31 @@ In ArgoCD UI:
 
 This is useful if you want to test manual changes without ArgoCD reverting them.
 
+# Vagrant + Ansible deployment (exam requirement)
+
+This project includes a full Infrastructure-as-Code setup using Vagrant and Ansible.
+
+## Prerequisites
+- VirtualBox
+- Vagrant
+- Ansible
+
+## Start the environment
+```bash
+vagrant up
+```
+
+This will:
+- Create a VM
+- Install Docker and Docker Compose
+- Deploy PostgreSQL, Collector API, and Query API
+
+## Verify
+```bash
+curl http://localhost:3000/health/live
+curl http://localhost:3001/health/live
+```
+
 # Prometheus + Grafana (how it works + how to validate)
 ## Observability architecture
 - Both APIs expose Prometheus metrics at GET /metrics

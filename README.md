@@ -131,7 +131,7 @@ Grafana provides dashboards for:
 
 
 ## Local Deployment and testing
-follow [this page](docs\deployment.md) for all the details
+You have multiple ways to deploy and test the app and monitoring feature, follow [this page](docs\deployment.md) for all the details
 ##  Release Management
 This project follows:
 - Semantic Versioning

@@ -13,9 +13,9 @@ services:
 
   collector:
     build:
-      context: ../../apps/collector-api
+      context: ./apps/collector-api
     env_file:
-      - ../../.env
+      - .env
     environment:
       COLLECTOR_PORT: 3000
     depends_on:
@@ -25,9 +25,9 @@ services:
 
   query:
     build:
-      context: ../../apps/query-api
+      context: ./apps/query-api
     env_file:
-      - ../../.env
+      - .env
     environment:
       QUERY_PORT: 3001
     depends_on:

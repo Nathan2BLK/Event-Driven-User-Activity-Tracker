@@ -1,0 +1,8 @@
+- name: Provision event tracker VM
+  hosts: event_tracker
+  become: true
+
+  roles: []
+  tasks:
+    - import_tasks: docker.yml
+    - import_tasks: app.yml

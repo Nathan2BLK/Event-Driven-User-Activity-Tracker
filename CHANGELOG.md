@@ -28,4 +28,7 @@ and this project adheres to **Semantic Versioning**.
 - Improved service startup stability using readiness/startup probes
 - Hardened database connectivity and persistence handling
 
+## [1.1.0] - 2026-02-02
+### Added
+- Add Vagrant + Ansible infrastructure for VM-based deployment
 ## Unreleased
