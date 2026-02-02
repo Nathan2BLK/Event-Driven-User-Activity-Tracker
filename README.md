@@ -78,6 +78,9 @@ Prebuilt images are published to Docker Hub:
 │   │   ├── prometheus/
 │   │   └── grafana/
 │   └── argocd/
+├── iac/
+│   ├── playbooks/
+│   ├── templates/
 ├── docs/
 │   ├── image/
 │   ├── gitops.md
@@ -102,9 +105,10 @@ Prebuilt images are published to Docker Hub:
 - GET /metrics
 
 
-explain-analyze-top-event-types![top-event-explain-analyze](docs/image\explain-analyze-top-event-types.png)
+explain-analyze-top-event-types
+![top-event-explain-analyze](docs/image/explain-analyze-top-event-types.png)
 
-explain-events-userid![top-event-explain-analyze](docs/image\explain-events-userid.png)
+explain-events-userid![top-event-explain-analyze](docs/image/explain-events-userid.png)
 
 ---
 ## Kubernetes Deployment
