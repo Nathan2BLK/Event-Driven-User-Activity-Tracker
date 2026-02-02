@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Event Tracker - Collector API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /health/live:
+    get:
+      summary: Liveness probe
+      responses:
+        "200":
+          description: Service is alive
+  /health/ready:
+    get:
+      summary: Readiness probe
+      responses:
+        "200":
+          description: Service is ready
+  /events:
+    post:
+      summary: Ingest a user event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [userId, sessionId, eventType]
+              properties:
+                userId:
+                  type: string
+                  example: u_123
+                sessionId:
+                  type: string
+                  example: s_456
+                eventType:
+                  type: string
+                  example: PAGE_VIEW
+      responses:
+        "200":
+          description: Event accepted
+        "400":
+          description: Invalid payload
+        "500":
+          description: Internal error
+  /metrics:
+    get:
+      summary: Prometheus metrics
+      responses:
+        "200":
+          description: Metrics in Prometheus format
