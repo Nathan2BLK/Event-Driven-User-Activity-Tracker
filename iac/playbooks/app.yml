@@ -1,0 +1,50 @@
+- name: Ensure application directory exists
+  file:
+    path: /home/vagrant/app
+    state: directory
+    owner: vagrant
+    group: vagrant
+    mode: "0755"
+
+- name: Copy environment file into compose project directory
+  template:
+    src: ../templates/.env.j2
+    dest: /home/vagrant/app/.env
+    owner: vagrant
+    group: vagrant
+    mode: "0644"
+
+- name: Copy docker-compose files into project directory
+  copy:
+    src: /vagrant/infra/docker-compose/
+    dest: /home/vagrant/app/
+    owner: vagrant
+    group: vagrant
+    mode: "0755"
+    remote_src: true
+
+- name: Sync application sources into project directory (fast)
+  synchronize:
+    src: /vagrant/apps/
+    dest: /home/vagrant/app/apps/
+    archive: yes
+    compress: yes
+    delete: yes
+  delegate_to: default
+
+- name: Assert query-api build context exists
+  stat:
+    path: /home/vagrant/app/apps/query-api
+  register: query_api_dir
+
+- name: Fail if query-api directory missing
+  fail:
+    msg: "Missing /home/vagrant/app/apps/query-api — check copy tasks"
+  when: not query_api_dir.stat.exists
+
+- name: Start application stack
+  become: true
+  command: >
+    docker compose --env-file /home/vagrant/app/.env up -d --build
+  args:
+    chdir: /home/vagrant/app
