@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: Event Tracker - Query API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+paths:
+  /health/live:
+    get:
+      summary: Liveness probe
+      responses:
+        "200":
+          description: Service is alive
+  /health/ready:
+    get:
+      summary: Readiness probe
+      responses:
+        "200":
+          description: Service is ready
+  /events:
+    get:
+      summary: List events (filterable)
+      parameters:
+        - in: query
+          name: userId
+          schema: { type: string }
+        - in: query
+          name: limit
+          schema: { type: integer, default: 50 }
+      responses:
+        "200":
+          description: Events list
+  /stats/top-event-types:
+    get:
+      summary: Top event types
+      parameters:
+        - in: query
+          name: limit
+          schema: { type: integer, default: 10 }
+      responses:
+        "200":
+          description: Aggregated stats
+  /metrics:
+    get:
+      summary: Prometheus metrics
+      responses:
+        "200":
+          description: Metrics in Prometheus format
