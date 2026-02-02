@@ -31,4 +31,5 @@ and this project adheres to **Semantic Versioning**.
 ## [1.1.0] - 2026-02-02
 ### Added
 - Add Vagrant + Ansible infrastructure for VM-based deployment
+- Add collector and query services to use pre-built images
 ## Unreleased
