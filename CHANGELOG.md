@@ -32,4 +32,5 @@ and this project adheres to **Semantic Versioning**.
 ### Added
 - Add Vagrant + Ansible infrastructure for VM-based deployment
 - Add collector and query services to use pre-built images
+- Add Swagger/OpenAPI documentation for Collector and Query APIs (/docs, /openapi.yaml)
 ## Unreleased
